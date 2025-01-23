@@ -17,7 +17,7 @@ const isDevelopment = process.env.NODE_ENV === "development";
 export async function generateImage(imageUrl: string) {
 	const { userId } = auth();
 
-	const headersList = headers();
+	const headersList = await headers();
 	const host = headersList.get("host") || "";
 	const protocol = headersList.get("x-forwarded-proto") || "";
 	let endpoint = `${protocol}://${host}`;

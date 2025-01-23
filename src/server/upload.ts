@@ -16,7 +16,7 @@ export async function uploadImage(file: File | null) {
   }
     const { userId } = auth();
   
-    const headersList = headers();
+    const headersList = await headers();
     const host = headersList.get("host") || "";
     const protocol = headersList.get("x-forwarded-proto") || "";
     let endpoint = `${protocol}://${host}`;
