@@ -146,9 +146,11 @@ export function App() {
 						iconPlacement="right"
 						onClick={async () => {
 							// await new Promise((resolve) => setTimeout(resolve, 3000));
-							await uploadImage(file)
-							// const runId = await generateImage(prompt);
-							// mutate("userRuns");
+							const s3Url = await uploadImage(file)
+							if (s3Url) {
+								const runId = await generateImage(s3Url);
+								mutate("userRuns");
+							}
 						}}
 					>
 						Generate

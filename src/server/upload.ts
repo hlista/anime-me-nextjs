@@ -31,8 +31,6 @@ export async function uploadImage(file: File | null) {
     }
   )
 
-  console.log(response)
-
   if (response.ok) {
     const { url, fields } = await response.json()
 
@@ -42,20 +40,18 @@ export async function uploadImage(file: File | null) {
     })
     formData.append('file', file)
 
-    console.log(formData)
-
     const uploadResponse = await fetch(url, {
       method: 'POST',
       body: formData,
     })
 
     if (uploadResponse.ok) {
-      alert('Upload successful!')
+      return `${uploadResponse.url}${fields["key"]}`
     } else {
       console.error('S3 Upload Error:', uploadResponse)
-      alert('Upload failed.')
+      throw new Error("Upload failed.");
     }
   } else {
-    alert('Failed to get pre-signed URL.')
+    throw new Error("Failed to get pre-signed URL.")
   }
 }
