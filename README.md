@@ -1,3 +1,8 @@
+## Anime me nextjs app
+Using the comfydeploy-fullstack-demo to make an img2img anime filter for faces
+
+## From ComfyDeploy README
+
 Full stack demo build with Next js 15, Tailwind, Shadcn UI, Drizzle, Turso, Clerk
 
 https://github.com/comfy-deploy/comfydeploy-fullstack-demo/assets/18395202/71ab2f5a-6e76-46a0-a1d1-81ba3a37b3ea
