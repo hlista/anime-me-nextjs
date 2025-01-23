@@ -8,9 +8,10 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { promises as fs } from "node:fs";
 
+
 export async function uploadImage(file: File | null) {
   if (!file) {
-    alert('Please select a file to upload.')
+    throw new Error("Please select a file to upload.");
     return
   }
     const { userId } = auth();

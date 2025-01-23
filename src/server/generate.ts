@@ -22,6 +22,22 @@ export async function generateImage(imageUrl: string) {
 	const protocol = headersList.get("x-forwarded-proto") || "";
 	let endpoint = `${protocol}://${host}`;
 
+	if (isDevelopment) {
+		const tunnelUrlFilePath = "tunnel_url.txt";
+
+		try {
+			const tunnelUrl = await fs.readFile(tunnelUrlFilePath, "utf-8");
+			endpoint = tunnelUrl.trim();
+
+			console.log(endpoint);
+		} catch (error) {
+			console.error(
+				`Failed to read tunnel URL from ${tunnelUrlFilePath}:`,
+				error,
+			);
+		}
+	}
+
 	if (!userId) throw new Error("User not found");
 
 	const inputs = {
