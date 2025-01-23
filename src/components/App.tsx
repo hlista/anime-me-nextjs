@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { generateImage } from "@/server/generate";
+import { uploadImage } from "@/server/upload"
 import { useEffect, useRef, useState } from "react";
 import { Card } from "./ui/card";
 import { ArrowRightIcon, WandSparklesIcon, Zap } from "lucide-react";
@@ -93,6 +94,7 @@ import { Badge } from "./ui/badge";
 // }
 
 export function App() {
+	const [file, setFile] = useState<File | null>(null)
 	const [prompt, setPrompt] = useState(
 		"beautiful scenery nature glass bottle landscape, , purple galaxy bottle,",
 	);
@@ -123,12 +125,16 @@ export function App() {
 							className={cn(realtime && "animate-pulse fill-yellow-400")}
 						/>
 					</Button> */}
-					<Input
-						id="input"
-						className="rounded-xl text-base sm:text-sm z-10"
-						value={prompt}
-						onChange={(e) => setPrompt(e.target.value)}
-						placeholder="An amazing image"
+      		<Input 
+						id="file"
+          	type="file"
+						onChange={(e) => {
+							const files = e.target.files
+							if (files) {
+								setFile(files[0])
+							}
+						}}
+          	accept="image/png, image/jpeg"
 					/>
 					<Button
 						variant="expandIcon"
@@ -140,8 +146,9 @@ export function App() {
 						iconPlacement="right"
 						onClick={async () => {
 							// await new Promise((resolve) => setTimeout(resolve, 3000));
-							const runId = await generateImage(prompt);
-							mutate("userRuns");
+							await uploadImage(file)
+							// const runId = await generateImage(prompt);
+							// mutate("userRuns");
 						}}
 					>
 						Generate
