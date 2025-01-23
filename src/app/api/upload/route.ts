@@ -23,6 +23,9 @@ export async function POST(request: Request) {
 
     return Response.json({ url, fields })
   } catch (error) {
-    return Response.json({ error: error.message })
+    if (error instanceof Error) {
+      return Response.json({ error: error.message })
+    }
+    return Response.json({})
   }
 }
