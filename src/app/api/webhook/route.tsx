@@ -12,7 +12,8 @@ export async function POST(request: Request) {
 	const { status, runId, outputs, liveStatus, progress } = data;
 
 	if (status === "success") {
-		const data = outputs?.[0].data?.images?.[0];
+		const imgindex = outputs?.findIndex((item) => item.nodeMeta.node_class === 'SaveImage')
+		const data = outputs?.[imgindex || 0].data?.images?.[0];
 		if (data && typeof data !== "string") {
 			const imageUrl = data.url;
 			await db

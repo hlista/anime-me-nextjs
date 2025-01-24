@@ -39,8 +39,8 @@ export function ImageGenerationResult({
 			setLiveStatus(res.liveStatus ?? null);
 		}
 		if (res && res.status === "success") {
-			// console.log(res.outputs?.[0]?.data);
-			const image = res.outputs?.[0]?.data?.images?.[0];
+			const imgindex = res.outputs?.findIndex((item) => item.nodeMeta.node_class === 'SaveImage')
+			const image = res.outputs?.[imgindex || 0]?.data?.images?.[0];
 			if (image && !(typeof image === "string")) {
 				setImage(image.url);
 			}

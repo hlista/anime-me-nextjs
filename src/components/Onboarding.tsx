@@ -10,7 +10,7 @@ import {
 	CardContent,
 } from "./ui/card";
 import { ArrowRight, ArrowRightIcon, ExternalLink, Github } from "lucide-react";
-import coverImage from "@/images/cover-image.jpg";
+import coverImage from "@/images/cover-image.png";
 import Image from "next/image";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
@@ -31,7 +31,7 @@ export function Onboarding() {
 					alt="Relighting Demo"
 				/>
 				<div className="px-6 gap-2 w-full md:w-fit flex flex-col h-full justify-center">
-					<CardTitle className="text-balance">Integrate ComfyUI into your project</CardTitle>
+					<CardTitle className="text-balance">Turn your portrait into an anime character</CardTitle>
 					<CardDescription className="text-balance">
 						A demo app build with Next js 15, Tailwind, Shadcn UI, Drizzle,
 						Turso, Clerk
@@ -52,7 +52,7 @@ export function Onboarding() {
 						<Button variant="outline" className="rounded-xl" asChild>
 							<Link
 								target="_blank"
-								href="https://github.com/comfy-deploy/comfydeploy-fullstack-demo"
+								href="https://github.com/hlista/anime-me-nextjs"
 								className="flex gap-2 items-center"
 							>
 								GitHub
