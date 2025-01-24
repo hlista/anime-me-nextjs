@@ -1,0 +1,1 @@
+ALTER TABLE `runs` RENAME COLUMN `prompt` TO `auto_tags`;

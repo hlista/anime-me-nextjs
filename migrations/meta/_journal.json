@@ -22,6 +22,20 @@
       "when": 1722890971223,
       "tag": "0002_freezing_weapon_omega",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1737733554916,
+      "tag": "0003_vengeful_ricochet",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1737734131951,
+      "tag": "0004_daffy_ultimates",
+      "breakpoints": true
     }
   ]
 }

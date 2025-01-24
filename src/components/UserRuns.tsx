@@ -22,14 +22,18 @@ export function UserRuns() {
 					>
 						{!run.image_url && <ImageGenerationResult runId={run.run_id} />}
 						{run.image_url && <img src={run.image_url} alt="Run" />}
-						{run.inputs && (
+						{run.auto_tags && (
 							<div className="transition-opacity group-hover:opacity-100 opacity-0 absolute bottom-0 text-xs text-white/80 p-4 bg-slate-950/40 flex flex-col gap-2">
-								{Object.entries(run.inputs).map(([key, value]) => (
+								<div key='auto_tags'>
+									<span className="font-bold">auto_tagged:</span>{" "}
+									<span>{run.auto_tags}</span>
+								</div>
+								{/* {Object.entries(run.inputs).map(([key, value]) => (
 									<div key={key}>
 										<span className="font-bold">{key}:</span>{" "}
 										<span>{value}</span>
 									</div>
-								))}
+								))} */}
 							</div>
 						)}
 					</div>
