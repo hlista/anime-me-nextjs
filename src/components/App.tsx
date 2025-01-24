@@ -145,11 +145,13 @@ export function App() {
 						Icon={WandSparklesIcon}
 						iconPlacement="right"
 						onClick={async () => {
-							// await new Promise((resolve) => setTimeout(resolve, 3000));
-							const s3Url = await uploadImage(file)
-							if (s3Url) {
-								const runId = await generateImage(s3Url);
-								mutate("userRuns");
+							if (file) {
+								const s3Url = await uploadImage(file)
+								if (s3Url) {
+									const runId = await generateImage(s3Url);
+									mutate("userRuns");
+								
+								}
 							}
 						}}
 					>
