@@ -6,7 +6,7 @@ import { auth } from "@clerk/nextjs/server";
 import { eq, desc } from "drizzle-orm";
 
 export async function getUserRuns() {
-	const { userId } = auth();
+	const { userId } = await auth();
 	if (!userId) throw new Error("User not found");
 
 	// return []

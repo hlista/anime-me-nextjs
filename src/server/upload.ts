@@ -14,7 +14,7 @@ export async function uploadImage(file: File | null) {
     throw new Error("Please select a file to upload.");
     return
   }
-    const { userId } = auth();
+    const { userId } = await auth();
   
     const headersList = await headers();
     const host = headersList.get("host") || "";
