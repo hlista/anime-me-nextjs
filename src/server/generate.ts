@@ -15,7 +15,7 @@ const client = new ComfyDeploy({
 const isDevelopment = process.env.NODE_ENV === "development";
 
 export async function generateImage(imageUrl: string) {
-	const { userId } = auth();
+	const { userId } = await auth();
 
 	const headersList = await headers();
 	const host = headersList.get("host") || "";
